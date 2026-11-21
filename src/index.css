@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+/* Minimal semantic presentation. Functional visibility utilities are retained. */
+:root { font-family: system-ui, sans-serif; line-height: 1.5; color: #222; background: white; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+header, footer, main { padding: 1rem; }
+section, article, fieldset { margin-block: 1rem; }
+nav { gap: 1rem; }
+label { display: block; margin-block: .5rem; }
+input, textarea, select, button { font: inherit; max-width: 100%; }
+input, textarea, select { padding: .4rem; }
+button { cursor: pointer; margin: .25rem; }
+button:disabled { opacity: .6; cursor: default; }
+textarea { min-height: 5rem; }
+img { max-width: 100%; height: auto; }
+a { color: #174ea6; }
+:focus-visible { outline: 2px solid #174ea6; outline-offset: 3px; }
+[role="alert"], [role="status"] { width: fit-content; max-width: min(100%,42rem); margin: 1rem auto; padding: .75rem; border: 1px solid currentColor; }
+
+@media print {
+  @page {
+    margin: 0.5in;
+  }
+
+  html,
+  body,
+  #root {
+    height: auto !important;
+    overflow: visible !important;
+    background: white !important;
+  }
+
+  body * {
+    visibility: hidden !important;
+  }
+
+  #invoice-print-area,
+  #invoice-print-area * {
+    visibility: visible !important;
+  }
+
+  #invoice-print-area {
+    position: absolute !important;
+    inset: 0 auto auto 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+    overflow: visible !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  #invoice-print-area table,
+  #invoice-print-area tr,
+  #invoice-print-area .break-inside-avoid {
+    break-inside: avoid;
+  }
+}
+
+ol { list-style-type: decimal; }
+ul li p { list-style-type: disc; }
+/* Neutral surfaces keep overlays and menus legible without client branding. */
+.fixed.inset-0 { background: rgb(0 0 0 / 30%); }
+.fixed.inset-0 > div, header, header nav, header .fixed { background-color: white; }
